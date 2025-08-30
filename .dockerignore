@@ -1,0 +1,40 @@
+# Git
+.git
+.gitignore
+
+# Documentation
+README.md
+DESIGN.md
+*.md
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+linkwatch
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Test files
+*_test.go
+testdata
+
+# Database files (will be created at runtime)
+*.db
+*.db-journal
+
+# Logs
+*.log
+
+# Temporary files
+tmp/
+temp/
