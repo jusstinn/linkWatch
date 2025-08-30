@@ -15,7 +15,7 @@ import (
 //   - Query parameters re sorted by key
 //   - Path normalized (removes empty values, trailing slashes if not root)
 func Canonicalize(raw string) (string, string, error) {
-	// Parse the input 
+	// Parse the input
 	parsed, err := url.Parse(raw)
 	if err != nil {
 		return "", "", fmt.Errorf("invalid URL: %w", err)

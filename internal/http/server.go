@@ -113,7 +113,7 @@ func (s *Server) listTargets(w http.ResponseWriter, r *http.Request) {
 	host := r.URL.Query().Get("host")
 	limitParam := r.URL.Query().Get("limit")
 	pageToken := r.URL.Query().Get("page_token")
-	
+
 	limit := 20
 	if limitParam != "" {
 		if parsed, err := parseInt(limitParam, 1, 100); err == nil {
@@ -121,8 +121,8 @@ func (s *Server) listTargets(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-		afterTime, afterID := parseCursorToken(pageToken)
-	
+	afterTime, afterID := parseCursorToken(pageToken)
+
 	targets, cursor, err := s.store.GetTargets(r.Context(), host, afterTime, afterID, limit)
 	if err != nil {
 		writeError(w, http.StatusInternalServerError, "failed to fetch targets: "+err.Error())
@@ -149,10 +149,10 @@ func (s *Server) getResults(w http.ResponseWriter, r *http.Request) {
 		writeError(w, http.StatusBadRequest, "target ID is required")
 		return
 	}
-	
+
 	sinceParam := r.URL.Query().Get("since")
 	limitParam := r.URL.Query().Get("limit")
-	
+
 	var since time.Time
 	if sinceParam != "" {
 		if parsed, err := time.Parse(time.RFC3339, sinceParam); err == nil {
@@ -162,7 +162,7 @@ func (s *Server) getResults(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	}
-	
+
 	limit := 50
 	if limitParam != "" {
 		if parsed, err := parseInt(limitParam, 1, 200); err == nil {
